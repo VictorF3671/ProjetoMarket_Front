@@ -1,19 +1,45 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 
-// Importe suas páginas normalmente
+// Layout do Dashboard (que vai conter as rotas internas com a barra lateral e app-bar)
+import Dashboard from '@/pages/Dashboard.vue';
+
+// Páginas
 import Login from '@/pages/Auth/Login.vue';
-//import Dashboard from '@/pages/Dashboard.vue';
+import ListaProdutos from '@/pages/Produtos/ListaProdutos.vue';
+import NovoProduto from '@/pages/Produtos/NovoProduto.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/home', 
+    redirect: '/dashboard', // Redireciona a raiz para o dashboard
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
-  }
+  },
+  {
+    path: '/dashboard',
+    component: Dashboard, // Layout fixo
+    children: [
+      {
+        path: '',
+        redirect: '/dashboard/produtos', // Redireciona para a lista de produtos
+      },
+      {
+        path: 'produtos',
+        name: 'ListaProdutos',
+        component: ListaProdutos,
+      },
+      {
+        path: 'novo-produto',
+        name: 'NovoProduto',
+        component: NovoProduto,
+      },
+      // Você pode adicionar outras rotas filhas aqui
+    ],
+    //meta: { requiresAuth: true }, // Se quiser exigir autenticação
+  },
 ];
 
 const router = createRouter({

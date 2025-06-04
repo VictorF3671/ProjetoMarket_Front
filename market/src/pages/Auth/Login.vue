@@ -40,6 +40,7 @@ async function VerifyLogin() {
       if (response.data.token) {
        const token = response.data.token 
        localStorage.setItem('token', token);
+       router.push('')
       }
     }catch(error){
 
