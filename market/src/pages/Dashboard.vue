@@ -1,13 +1,13 @@
 <template>
   <v-layout style="height: 100vh;">
-    <!-- Drawer lateral fixo -->
+  
     <v-navigation-drawer
       v-model="drawer"
       :rail="rail"
       permanent
       @click="rail = false"
     >
-      <!-- Usuário -->
+    
       <v-list>
         <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
@@ -25,7 +25,6 @@
 
       <v-divider></v-divider>
 
-      <!-- Menu de navegação -->
       <v-list density="compact" nav>
         <v-list-item
           prepend-icon="mdi-cart-outline"
@@ -37,15 +36,13 @@
       </v-list>
     </v-navigation-drawer>
 
-    <!-- Área principal -->
     <v-main>
-      <!-- Barra de topo -->
+  
       <v-app-bar flat  dark>
         <v-app-bar-title>Market</v-app-bar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
 
-      <!-- Área que troca com as rotas filhas -->
       <router-view />
     </v-main>
   </v-layout>

@@ -1,12 +1,13 @@
 <template>
   <v-container class="d-flex justify-center align-center" style="height: 100vh;">
-    <v-card class="pa-4" style="width: 500px;">
-      <v-card-title class="text-center">Login</v-card-title>
+    <v-card class="pa-4" style="width: 400px; height: 400px; justify-content: center;" elevation="9">
+      <v-card-title class="text-center" style="font-weight: bold; margin-bottom: 50px;">Projeto Market</v-card-title>
+      
       <v-card-text>
-        <v-form>
-          <v-text-field label="Email" v-model="user.email" type="email" required outlined></v-text-field>
+        <v-form >
+          <v-text-field variant="outlined" label="Email" v-model="user.email" type="email" required></v-text-field>
 
-          <v-text-field label="Senha" v-model="user.password" type="password" required></v-text-field>
+          <v-text-field variant="outlined" label="Senha" v-model="user.password" type="password" required></v-text-field>
 
           <v-btn color="warning" @click="VerifyLogin" block>Entrar</v-btn>
         </v-form>
@@ -18,7 +19,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import axios from '@/plugins/axios'; // ajuste o caminho para o seu plugin axios
+import axios from '@/plugins/axios'; 
 import type { ILogin } from './ILogin';
 
 const user = ref<ILogin>({
@@ -40,7 +41,7 @@ async function VerifyLogin() {
       if (response.data.token) {
        const token = response.data.token 
        localStorage.setItem('token', token);
-       router.push('')
+       router.push('/dashboard')
       }
     }catch(error){
 

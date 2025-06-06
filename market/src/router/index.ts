@@ -11,7 +11,7 @@ import NovoProduto from '@/pages/Produtos/NovoProduto.vue';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/dashboard', // Redireciona a raiz para o dashboard
+    redirect: '/login', 
   },
   {
     path: '/login',
@@ -20,11 +20,11 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/dashboard',
-    component: Dashboard, // Layout fixo
+    component: Dashboard,
     children: [
       {
         path: '',
-        redirect: '/dashboard/produtos', // Redireciona para a lista de produtos
+        redirect: '/dashboard/produtos', 
       },
       {
         path: 'produtos',
