@@ -6,21 +6,29 @@
     <v-form @submit.prevent="cadastrarProduto" ref="formRef">
       <v-text-field
         label="Nome do Produto"
-        v-model="produto.nome"
+        v-model="produto.name"
         required
         variant="outlined"
       ></v-text-field>
 
       <v-text-field
         label="Descrição"
-        v-model="produto.descricao"
+        v-model="produto.description"
         required
         variant="outlined"
       ></v-text-field>
 
       <v-text-field
         label="Preço"
-        v-model="produto.preco"
+        v-model="produto.price"
+        type="number"
+        required
+        variant="outlined"
+      ></v-text-field>
+
+      <v-text-field
+        label="Estoque"
+        v-model="produto.stock"
         type="number"
         required
         variant="outlined"
@@ -35,17 +43,15 @@
 import { ref } from 'vue';
 import axios from '@/plugins/axios'; // Ajuste o caminho se precisar
 import { useRouter } from 'vue-router';
+import type { IProduto } from './IProduto';
+import { createProduct } from '@/services/ProductServices';
 
-interface Produto {
-  nome: string;
-  descricao: string;
-  preco: number;
-}
 
-const produto = ref<Produto>({
-  nome: '',
-  descricao: '',
-  preco: 0,
+const produto = ref<IProduto>({
+  name: '',
+  description: '',
+  price: 0,
+  stock: 0
 });
 
 const formRef = ref();
@@ -56,13 +62,10 @@ const cadastrarProduto = async () => {
     // Você pode adicionar validações antes de enviar
     console.log('Enviando produto:', produto.value);
 
-    const response = await axios.post('/produtos', produto.value);
-
-    console.log('Produto cadastrado:', response.data);
-
-    // Redireciona ou dá feedback
-    alert('Produto cadastrado com sucesso!');
-    router.push('/dashboard/produtos'); // volta para lista de produtos
+    const response = await createProduct(produto.value);
+    if(response.data.success){
+    router.push('/dashboard/produtos'); 
+    }
   } catch (error) {
     console.error('Erro ao cadastrar produto:', error);
     alert('Erro ao cadastrar produto. Tente novamente.');

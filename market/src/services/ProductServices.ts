@@ -2,13 +2,14 @@ import axios from '@/plugins/axios';
 
 export interface Product {
   id?: number;
-  nome: string;
-  descricao: string;
-  preco: number;
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
 }
 
 export const getAllProducts = async () => {
-  const response = await axios.get('/produtos');
+  const response = await axios.get('/Products');
   return response.data;
 };
 
@@ -18,7 +19,7 @@ export const getProductById = async (id: number) => {
 };
 
 export const createProduct = async (product: Product) => {
-  const response = await axios.post('/produtos', product);
+  const response = await axios.post('/Products', product);
   return response.data;
 };
 

@@ -35,33 +35,43 @@
       :items="produtos"
       :search="search"
       class="mt-4"
+      color="primary"
     ></v-data-table>
   </v-container>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import type { IProduto } from './IProduto.ts';
 import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { getAllProducts } from '@/services/ProductServices';
 
 const search = ref('');
 const router = useRouter();
 
-const produtos = ref([
-  { id: 1, nome: 'Produto A', preco: 10.5 },
-  { id: 2, nome: 'Produto B', preco: 20.0 },
-  { id: 3, nome: 'Produto C', preco: 15.75 },
-]);
+const produtos = ref<IProduto[]>([]);
 
 const headers = [
   { text: 'ID', value: 'id' },
   { text: 'Nome', value: 'name' },
   { text: 'Preço', value: 'price' },
-  { text: 'Descrição', value: 'description'},
-  { text: 'Estoque', value: 'stock'},
-  { text: 'Criado Em', value: 'CreatedAt'}
+  { text: 'Descrição', value: 'description' },
+  { text: 'Estoque', value: 'stock' },
+  { text: 'Criado Em', value: 'createdAt' },
 ];
 
+const carregarProdutos = async () =>{
+  try{
+  produtos.value = await getAllProducts(); 
+} catch(error){
+
+}
+}
 const goToNovoProduto = () => {
   router.push('/dashboard/novo-produto');
 };
+onMounted(() => {
+  carregarProdutos();
+});
 </script>

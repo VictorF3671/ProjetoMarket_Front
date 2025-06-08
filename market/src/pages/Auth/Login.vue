@@ -9,7 +9,7 @@
 
           <v-text-field variant="outlined" label="Senha" v-model="user.password" type="password" required></v-text-field>
 
-          <v-btn color="warning" @click="VerifyLogin" block>Entrar</v-btn>
+          <v-btn color="primary" @click="VerifyLogin" block>Entrar</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
