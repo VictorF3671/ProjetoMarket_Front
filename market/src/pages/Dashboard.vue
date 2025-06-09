@@ -37,7 +37,7 @@
           prepend-icon="mdi-account-outline"
           title="Usuarios"
           value="usuarios"
-          to="/dashboard/produtos"
+          to="/dashboard/usuarios"
           link
         ></v-list-item>
       </v-list>

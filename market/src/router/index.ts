@@ -4,6 +4,8 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import Dashboard from '@/pages/Dashboard.vue';
 
 // Páginas
+import ListaUsuarios from '@/pages/Usuarios/ListaUsuarios.vue';
+import NovoUsuario from '@/pages/Usuarios/NovoUsuario.vue';
 import Login from '@/pages/Auth/Login.vue';
 import ListaProdutos from '@/pages/Produtos/ListaProdutos.vue';
 import NovoProduto from '@/pages/Produtos/NovoProduto.vue';
@@ -36,9 +38,19 @@ const routes: RouteRecordRaw[] = [
         name: 'NovoProduto',
         component: NovoProduto,
       },
-      // Você pode adicionar outras rotas filhas aqui
+      {
+        path: 'usuarios',
+        name: 'ListaUsuarios',
+        component: ListaUsuarios,
+      },
+      {
+        path: 'novo-usuario',
+        name: 'NovoUsuario',
+        component: NovoUsuario,
+      },
+      
     ],
-    //meta: { requiresAuth: true }, // Se quiser exigir autenticação
+    //meta: { requiresAuth: true }, 
   },
 ];
 

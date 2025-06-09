@@ -1,6 +1,5 @@
 <template>
   <v-container fluid>
-    <!-- Cabeçalho da tela -->
     <v-row
       align="center"
       justify="space-between"
@@ -29,7 +28,7 @@
       </div>
     </v-row>
 
-    <!-- Tabela de produtos -->
+    
     <v-data-table
       :headers="headers"
       :items="produtos"
@@ -54,7 +53,7 @@ const produtos = ref<IProduto[]>([]);
 
 const headers = [
   { text: 'ID', value: 'id' },
-  { text: 'Nome', value: 'name' },
+  { text: 'Nome', value: 'nome' },
   { text: 'Preço', value: 'price' },
   { text: 'Descrição', value: 'description' },
   { text: 'Estoque', value: 'stock' },
