@@ -29,6 +29,6 @@ export const updateProduct = async (id: number, product: Product) => {
 };
 
 export const deleteProduct = async (id: number) => {
-  const response = await axios.delete(`/produtos/${id}`);
+  const response = await axios.delete(`/Products/${id}`);
   return response.data;
 };

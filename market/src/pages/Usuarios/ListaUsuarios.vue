@@ -17,7 +17,7 @@
       </div>
     </v-row>
 
-    <v-data-table :headers="headers" :items="usuarios" :search="search" class="mt-4" color="primary"></v-data-table>
+    <v-data-table :headers="headers" :items="usuarios" :search="search" class="mt-4 elevation-1 rounded-lg"  color="primary" outlined dense hide-default-footer></v-data-table>
   </v-container>
 </template>
 
@@ -35,13 +35,13 @@ const goToNovoUsuario = async () => {
   router.push('novo-usuario')
 }
 
-const headers = [
-  { text: 'ID', value: 'id' },
-  { text: 'Nome', value: 'name' },
-  { text: 'Email', value: 'email' },
-  { text: 'Telefone', value: 'phoneNumber' },
-  { text: 'Grupo', value: 'group' },
-];
+const headers = ref([
+  { title: 'Id', key: 'id', align: "start" },
+  { title: 'Nome', key: 'name', align: "start"   },
+  { title: 'Email', key: 'email', align: "start"  },
+  { title: 'Telefone', key: 'phoneNumber', align: "start"  },
+  { title: 'Grupo', key: 'group' , align: "start" },
+]);
 
 const carregarUsuarios = async () => {
   try {
